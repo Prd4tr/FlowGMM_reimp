@@ -168,7 +168,7 @@ class RealNVPwCond(RealNVPBase):
                     ActNorm2d(in_channels)))
             layers.append(iCategoricalFiLM(num_classes,in_channels))
         return layers
-'''
+
 class RealNVPTabular(RealNVPBase):
 
     def __init__(self, in_dim=2, num_coupling_layers=6, hidden_dim=256, 
@@ -181,4 +181,4 @@ class RealNVPTabular(RealNVPBase):
                             init_zeros=init_zeros,dropout=dropout)
                         for i in range(num_coupling_layers)
                     ])
- '''
+ 
