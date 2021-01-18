@@ -169,7 +169,7 @@ class RealNVPwCond(RealNVPBase):
             layers.append(iCategoricalFiLM(num_classes,in_channels))
         return layers
 
-
+'''
 class RealNVPMNIST(RealNVPBase):
     def __init__(self, in_channels=1, mid_channels=64, num_blocks=4):
         super(RealNVPMNIST, self).__init__()
@@ -213,3 +213,4 @@ class RealNVPTabular(RealNVPBase):
                             init_zeros=init_zeros,dropout=dropout)
                         for i in range(num_coupling_layers)
                     ])
+ '''
