@@ -9,7 +9,7 @@ from oil.utils.utils import Eval, izip, icycle,imap, export
 import flow_ssl
 import utils
 from flow_ssl import FlowLoss
-#from flow_ssl.realnvp import RealNVPTabular
+from flow_ssl.realnvp import RealNVPTabular
 from flow_ssl.distributions import SSLGaussMixture
 from scipy.spatial.distance import cdist
 @export
