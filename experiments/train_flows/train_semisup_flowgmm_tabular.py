@@ -12,7 +12,6 @@ from flow_ssl import FlowLoss
 #from flow_ssl.realnvp import RealNVPTabular
 from flow_ssl.distributions import SSLGaussMixture
 from scipy.spatial.distance import cdist
-'''
 @export
 def RealNVPTabularWPrior(num_classes,dim_in,coupling_layers,k,means_r=.8,cov_std=1.,nperlayer=1,acc=0.9):
     #print(f'Instantiating means with dimension {dim_in}.')
@@ -53,7 +52,7 @@ def ResidualTabularWPrior(num_classes,dim_in,coupling_layers,k,means_r=1.,cov_st
     means_np = means.cpu().numpy()
     #print("Pairwise dists:", cdist(means_np, means_np))
     return model
-'''
+
 @export
 class SemiFlow(Trainer):
     def __init__(self, *args, unlab_weight=1.,cons_weight=3.,
