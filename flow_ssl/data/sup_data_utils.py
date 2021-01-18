@@ -2,8 +2,8 @@ import torch
 import torchvision
 import os
 from flow_ssl.data.nlp_datasets import AG_News
-from flow_ssl.data.image_datasets import SVHN_
-from flow_ssl.data.image_datasets import OldInterface
+#from flow_ssl.data.image_datasets import SVHN_
+#from flow_ssl.data.image_datasets import OldInterface
 
 
 def make_sup_data_loaders(
