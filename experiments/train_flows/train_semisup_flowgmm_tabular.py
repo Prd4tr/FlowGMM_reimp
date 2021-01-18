@@ -12,9 +12,8 @@ from flow_ssl import FlowLoss
 #from flow_ssl.realnvp import RealNVPTabular
 from flow_ssl.distributions import SSLGaussMixture
 from scipy.spatial.distance import cdist
-
-@export
 '''
+@export
 def RealNVPTabularWPrior(num_classes,dim_in,coupling_layers,k,means_r=.8,cov_std=1.,nperlayer=1,acc=0.9):
     #print(f'Instantiating means with dimension {dim_in}.')
     device = torch.device('cuda')
