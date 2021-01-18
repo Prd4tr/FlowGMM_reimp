@@ -12,7 +12,7 @@ import torch
 from PIL import Image
 import numpy as np
 from torch.utils.data.sampler import Sampler
-from flow_ssl.data.image_datasets import SVHN_
+#from flow_ssl.data.image_datasets import SVHN_
 from flow_ssl.data.nlp_datasets import AG_News
 
 
@@ -62,9 +62,9 @@ def make_ssl_npz_data_loaders(
     labeled_idxs, unlabeled_idxs = labels['labeled_indices'], labels['unlabeled_indices']
     
     download=True
-    if dataset.lower() == "svhn":
-        ds = SVHN_
-    elif dataset.lower() == "ag_news":
+    #if dataset.lower() == "svhn":
+     #   ds = SVHN_
+    if dataset.lower() == "ag_news":
         ds = AG_News
         download=False
     else:
