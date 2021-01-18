@@ -63,7 +63,7 @@ class Glow(GlowBase):
 
         layers.append(FlatJoin())
         self.body = iSequential(*layers)
-
+'''
 
 class GlowMNIST(GlowBase):
     def __init__(self, in_channels=1, mid_channels=64, num_blocks=4):
@@ -101,3 +101,4 @@ class GlowMNIST(GlowBase):
                 CouplingLayer(in_channels, mid_channels, num_blocks, mask_class(reverse_mask=False)),
         ]
         return layers
+'''
