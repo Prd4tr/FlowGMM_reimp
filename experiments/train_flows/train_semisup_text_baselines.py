@@ -48,60 +48,6 @@ class SmallNN(nn.Module,metaclass=Named):
         return self.net(x)
 
 
-# def makeTrainer(config):
-#     cfg = {'network':SmallNN,'net_config': {},
-#         'loader_config': {'amnt_labeled':200+5000,'amnt_dev':5000,'lab_BS':200, 'pin_memory':True,'num_workers':2},
-#         'opt_config':{'lr':1e-3},#, 'momentum':.9, 'weight_decay':1e-4,'nesterov':True},
-#         'num_epochs':100,
-#         'trainer':PiModel,
-#         'unlab_loader_config':{'batch_size':2000,'num_workers':4,'pin_memory':True},
-#         'trainer_config':{'log_dir':os.path.expanduser('~/tb-experiments/text_vat/'),'log_args':{'minPeriod':.1, 'timeFrac':3/10}},
-#         }
-#     recursively_update(cfg,config)
-#     trainset = AG_News(os.path.expanduser('~/datasets/AGNEWS/'),train=True)
-#     testset = AG_News(os.path.expanduser('~/datasets/AGNEWS/'),train=False)
-#     device = torch.device('cpu')
-#     model = cfg['network'](num_classes=trainset.num_classes,dim_in=trainset.dim,**cfg['net_config']).to(device)
-#     dataloaders = {}
-#     dataloaders['lab'], dataloaders['dev'] = getLabLoader(trainset,**cfg['loader_config'])
-#     dataloaders['train'] = dataloaders['Train'] = dataloaders['lab']
-    
-#     full_data_loader = DataLoader(trainset,shuffle=True,**cfg['unlab_loader_config'])
-#     dataloaders['_unlab'] = imap(lambda z: z[0], full_data_loader)
-#     dataloaders['test'] = DataLoader(testset,batch_size=cfg['loader_config']['lab_BS'],shuffle=False)
-#     dataloaders = {k:LoaderTo(v,device) for k,v in dataloaders.items()}
-#     opt_constr = lambda params: torch.optim.Adam(params, **cfg['opt_config'])
-#     lr_sched = cosLr(cfg['num_epochs'])
-#     return cfg['trainer'](model,dataloaders,opt_constr,lr_sched,**cfg['trainer_config'])
-
-
-def makeTabularTrainer(**config):
-    cfg = {'dataset':HEPMASS,'network':SmallNN,'net_config': {},
-        'loader_config': {'amnt_labeled':20+5000,'amnt_dev':5000,'lab_BS':20},
-        'opt_config': {'lr':1e-4},#{'lr':.1, 'momentum':.9, 'weight_decay':1e-4, 'nesterov':True},
-        'num_epochs':200,
-        'unlab_loader_config':{'batch_size':2000,'num_workers':4,'pin_memory':True},
-        'trainer_config':{'log_dir':os.path.expanduser('~/tb-experiments/UCI/'),'log_args':{'minPeriod':.1, 'timeFrac':3/10}},
-        }
-    recursively_update(cfg,config)
-    
-    trainset = cfg['dataset'](train=True)
-    testset = cfg['dataset'](train=False)
-    print(f"Trainset: {len(trainset)}, Testset: {len(testset)}")
-    device = torch.device('cuda')
-    model = cfg['network'](num_classes=trainset.num_classes,dim_in=trainset.dim,**cfg['net_config']).to(device)
-    dataloaders = {}
-    dataloaders['lab'], dataloaders['dev'] = getLabLoader(trainset,**cfg['loader_config'])
-    dataloaders['train'] = dataloaders['Train'] = dataloaders['lab']
-    
-    full_data_loader = DataLoader(trainset,shuffle=True,**cfg['unlab_loader_config'])
-    dataloaders['_unlab'] = imap(lambda z: z[0], full_data_loader)
-    dataloaders['test'] = DataLoader(testset,batch_size=cfg['loader_config']['lab_BS'],shuffle=False)
-    dataloaders = {k:LoaderTo(v,device) for k,v in dataloaders.items()}
-    opt_constr = lambda params: torch.optim.Adam(params, **cfg['opt_config'])
-    lr_sched = lambda e: 1.#cosLr(cfg['num_epochs'])
-    return cfg['trainer'](model,dataloaders,opt_constr,lr_sched,**cfg['trainer_config'])
-
 
 PI_trial = train_trial(makeTabularTrainer,strict=True)
 
