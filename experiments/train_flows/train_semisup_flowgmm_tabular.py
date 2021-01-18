@@ -105,14 +105,4 @@ import copy
 from flow_ssl.data.nlp_datasets import AG_News
 from flow_ssl.data import GAS, HEPMASS, MINIBOONE
 
-# if __name__=="__main__":
-#     trial(uci_hepmass_flowgmm_cfg)
-    # thestudy = Study(trial,uci_hepmass_flowgmm_cfg,study_name='uci_flowgmm_hypers222_m__m_m')
-    # thestudy.run(1,ordered=False)
-    # covars = thestudy.covariates()
-    # covars['test_Acc'] = thestudy.outcomes['test_Acc'].values
-    # covars['dev_Acc'] = thestudy.outcomes['dev_Acc'].values
-    #print(covars.drop(['log_suffix','saved_at'],axis=1))
-    # print(thestudy.covariates())
-    # print(thestudy.outcomes)
 
