@@ -15,7 +15,7 @@ from oil.architectures.img_classifiers.networkparts import layer13
 from oil.utils.utils import LoaderTo, cosLr, recursively_update,islice, imap
 from oil.tuning.study import Study, train_trial
 from flow_ssl.data.nlp_datasets import AG_News,YAHOO
-from flow_ssl.data import GAS, HEPMASS, MINIBOONE
+#from flow_ssl.data import GAS, HEPMASS, MINIBOONE
 from torchvision import transforms
 import torch
 from torch.autograd import Variable
