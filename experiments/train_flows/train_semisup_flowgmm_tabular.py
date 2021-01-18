@@ -103,6 +103,6 @@ import copy
 #from train_semisup_text_baselines import makeTabularTrainer
 #from flowgmm_tabular_new import tabularTrial
 from flow_ssl.data.nlp_datasets import AG_News
-from flow_ssl.data import GAS, HEPMASS, MINIBOONE
+
 
 
