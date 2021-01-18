@@ -50,7 +50,7 @@ class SmallNN(nn.Module,metaclass=Named):
 
 
 PI_trial = train_trial(makeTabularTrainer,strict=True)
-
+'''
 uci_pi_spec = {'network':SmallNN,'net_config': {},'dataset':[MINIBOONE,HEPMASS],
         #'loader_config': {'lab_BS':200},
         'opt_config': {'lr':[1e-3,3e-3,1e-4]},
@@ -81,6 +81,7 @@ uci_baseline_spec = {'network':SmallNN,'net_config': {},'dataset':[MINIBOONE],
         'trainer_config':{'log_dir':os.path.expanduser('~/tb-experiments/UCI/t3layer_baseline/'),
         'log_args':{'minPeriod':.01, 'timeFrac':3/10}}#[1,.1,.3,3],}#'advEps':[10,3,1,.3]}
         }
+'''
 if __name__=='__main__':
     # thestudy = Study(PI_trial,uci_pi_spec2,study_name='uci_baseline2234_')
     # thestudy.run(num_trials=3,ordered=False)
