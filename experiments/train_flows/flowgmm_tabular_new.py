@@ -15,7 +15,7 @@ from oil.architectures.img_classifiers.networkparts import layer13
 from oil.utils.utils import LoaderTo, cosLr, recursively_update,islice, imap
 from oil.tuning.study import Study, train_trial
 from flow_ssl.data.nlp_datasets import AG_News,YAHOO
-from flow_ssl.data import GAS, HEPMASS, MINIBOONE
+#from flow_ssl.data import GAS, HEPMASS, MINIBOONE
 from torchvision import transforms
 import torch
 from torch.autograd import Variable
@@ -44,7 +44,7 @@ import flow_ssl.data as tabular_datasets
 import train_semisup_flowgmm_tabular as flows
 import train_semisup_text_baselines as archs
 import oil.model_trainers as trainers
-def makeTrainer(*,dataset=HEPMASS,network=SmallNN,num_epochs=15,
+def makeTrainer(*,dataset=YAHOO,network=SmallNN,num_epochs=15,
                 bs=5000,lr=1e-3,optim=AdamW,device='cuda',trainer=Classifier,
                 split={'train':20,'val':5000},net_config={},opt_config={'weight_decay':1e-5},
                 trainer_config={'log_dir':os.path.expanduser('~/tb-experiments/UCI/'),'log_args':{'minPeriod':.1, 'timeFrac':3/10}},
