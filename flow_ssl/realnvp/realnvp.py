@@ -168,39 +168,7 @@ class RealNVPwCond(RealNVPBase):
                     ActNorm2d(in_channels)))
             layers.append(iCategoricalFiLM(num_classes,in_channels))
         return layers
-
 '''
-class RealNVPMNIST(RealNVPBase):
-    def __init__(self, in_channels=1, mid_channels=64, num_blocks=4):
-        super(RealNVPMNIST, self).__init__()
-        
-        self.body = iSequential(
-                addZslot(), 
-                passThrough(iLogits()),
-                passThrough(CouplingLayer(in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=False))),
-                passThrough(CouplingLayer(in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=True))),
-                passThrough(CouplingLayer(in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=False))),
-                passThrough(SqueezeLayer(2)),
-                passThrough(CouplingLayer(4*in_channels, mid_channels, num_blocks, MaskChannelwise(reverse_mask=False))),
-                passThrough(CouplingLayer(4*in_channels, mid_channels, num_blocks, MaskChannelwise(reverse_mask=True))),
-                passThrough(CouplingLayer(4*in_channels, mid_channels, num_blocks, MaskChannelwise(reverse_mask=False))),
-                keepChannels(2*in_channels),                                                      
-                passThrough(CouplingLayer(2*in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=False))),
-                passThrough(CouplingLayer(2*in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=True))),
-                passThrough(CouplingLayer(2*in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=False))),
-                passThrough(SqueezeLayer(2)),
-                passThrough(CouplingLayer(8*in_channels, mid_channels, num_blocks, MaskChannelwise(reverse_mask=False))),
-                passThrough(CouplingLayer(8*in_channels, mid_channels, num_blocks, MaskChannelwise(reverse_mask=True))),
-                passThrough(CouplingLayer(8*in_channels, mid_channels, num_blocks, MaskChannelwise(reverse_mask=False))),
-                keepChannels(4*in_channels),
-                passThrough(CouplingLayer(4*in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=False))),
-                passThrough(CouplingLayer(4*in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=True))),
-                passThrough(CouplingLayer(4*in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=False))),
-                passThrough(CouplingLayer(4*in_channels, mid_channels, num_blocks, MaskCheckerboard(reverse_mask=True))),
-                FlatJoin()
-            )
-
-
 class RealNVPTabular(RealNVPBase):
 
     def __init__(self, in_dim=2, num_coupling_layers=6, hidden_dim=256, 
