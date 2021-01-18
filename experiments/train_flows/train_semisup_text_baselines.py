@@ -50,38 +50,7 @@ class SmallNN(nn.Module,metaclass=Named):
 
 
 PI_trial = train_trial(makeTabularTrainer,strict=True)
-'''
-uci_pi_spec = {'network':SmallNN,'net_config': {},'dataset':[MINIBOONE,HEPMASS],
-        #'loader_config': {'lab_BS':200},
-        'opt_config': {'lr':[1e-3,3e-3,1e-4]},
-        'loader_config': {'amnt_labeled':20+5000,'amnt_dev':5000,'lab_BS':20},
-        'num_epochs':50,#100,#100,#5,#800,
-        #'unlab_loader_config':{'batch_size':2000},
-        'net_config':{'k':[256,512]},'trainer':PiModel,
-        'trainer_config':{'log_dir':os.path.expanduser('~/tb-experiments/UCI/t3layer_pi_uci3/'),
-        'cons_weight':[20,30,50]}#[1,.1,.3,3],}#'advEps':[10,3,1,.3]}
-        }
-uci_pi_spec2 = {'network':SmallNN,'net_config': {},'dataset':[MINIBOONE],
-        #'loader_config': {'lab_BS':200},
-        'opt_config': {'lr':lambda cfg: 3e-3 if cfg['dataset']==HEPMASS else 3e-5},
-        'loader_config': {'amnt_labeled':20+5000,'amnt_dev':5000,'lab_BS':20},
-        'num_epochs':50,#100,#100,#5,#800,
-        #'unlab_loader_config':{'batch_size':2000},
-        'net_config':{'k':256},'trainer':PiModel,
-        'trainer_config':{'log_dir':os.path.expanduser('~/tb-experiments/UCI/t3layer_pi_uci3r/'),
-        'cons_weight':30}#[1,.1,.3,3],}#'advEps':[10,3,1,.3]}
-        }
-uci_baseline_spec = {'network':SmallNN,'net_config': {},'dataset':[MINIBOONE],
-        #'loader_config': {'lab_BS':200},
-        'opt_config': {'lr':3e-4},
-        'loader_config': {'amnt_labeled':20+5000,'amnt_dev':5000,'lab_BS':20},
-        'num_epochs':100,#100,#100,#5,#800,
-        #'unlab_loader_config':{'batch_size':2000},
-        'net_config':{'k':256},'trainer':Classifier,
-        'trainer_config':{'log_dir':os.path.expanduser('~/tb-experiments/UCI/t3layer_baseline/'),
-        'log_args':{'minPeriod':.01, 'timeFrac':3/10}}#[1,.1,.3,3],}#'advEps':[10,3,1,.3]}
-        }
-'''
+
 if __name__=='__main__':
     # thestudy = Study(PI_trial,uci_pi_spec2,study_name='uci_baseline2234_')
     # thestudy.run(num_trials=3,ordered=False)
