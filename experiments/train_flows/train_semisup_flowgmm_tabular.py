@@ -36,7 +36,7 @@ def RealNVPTabularWPrior(num_classes,dim_in,coupling_layers,k,means_r=.8,cov_std
         model.prior = SSLGaussMixture(means, inv_cov_std,device=device)
         means_np = means.cpu().numpy()
     print("Pairwise dists:", cdist(means_np, means_np))
-    print(model)
+    print(m)
     return model
 
 def ResidualTabularWPrior(num_classes,dim_in,coupling_layers,k,means_r=1.,cov_std=1.,nperlayer=1,acc=0.9):
@@ -93,6 +93,7 @@ class SemiFlow(Trainer):
                 metrics['Unlab_loss(mb)']=self.model.nll(minibatch[1]).mean().cpu().data.numpy()
         self.logger.add_scalars('metrics',metrics,step)
         super().logStuff(step, minibatch)
+       
 
 
 from oil.tuning.study import Study, train_trial
