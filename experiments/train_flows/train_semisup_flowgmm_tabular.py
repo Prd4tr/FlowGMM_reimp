@@ -35,6 +35,7 @@ def RealNVPTabularWPrior(num_classes,dim_in,coupling_layers,k,means_r=.8,cov_std
         means = utils.get_means('random',r=means_r*.7,num_means=num_classes, trainloader=None,shape=(dim_in),device=device)
         model.prior = SSLGaussMixture(means, inv_cov_std,device=device)
         means_np = means.cpu().numpy()
+    print("Means :", means_np)
     print("Pairwise dists:", cdist(means_np, means_np))
     return model
 
