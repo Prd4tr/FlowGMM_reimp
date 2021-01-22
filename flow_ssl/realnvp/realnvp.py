@@ -181,5 +181,5 @@ class RealNVPTabular(RealNVPBase):
                             init_zeros=init_zeros,dropout=dropout)
                         for i in range(num_coupling_layers)
                     ])
-        print("model",self.body.layers)
+        
  
